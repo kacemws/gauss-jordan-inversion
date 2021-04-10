@@ -21,32 +21,24 @@ def iteration_GJ (A, r, s):
     return A
 
 
-def iteration_GJ_UP (A,I, r, s): 
-    pivot = A[r][s]
-    for j in range(0,len(A[0])) : 
-        A[r][j] = A[r][j] / pivot
-        I[r][j] = I[r][j] / pivot
-    for i in range(0, len(A)) : 
-        if i != r : 
-            Ais = A[i][s]
-            for j in range(0,len(A[0])) : 
-                A[i][j] = A[i][j] - Ais * A[r][j]
-                I[i][j] = I[i][j] - Ais * I[r][j]
-    return A,I
-
 ID = np.identity(len(A)).tolist()
+for i in range(0,len(ID)) :
+    for j in range(0,len(ID[i])) : 
+        A[i].append(ID[i][j])
+
 for i in range(0, len(A)) : 
-    for j in range(0,len(A[0])) : 
-        if A[i][j] != 0 :
-            r = i
-            s = j
-            A,ID= iteration_GJ_UP(A, ID, r, s)
-            break
+        r = i
+        s = i
+        A= iteration_GJ(A, r, s)
+
+for i in range(0, len(A)) : 
+    # A[i] = A[i][]
+    A[i] = A[i][-len(old_a):]
 
 
 print("matrice : ",A)
-print('************')
-print("inverse using GJ : ",ID)
+# print('************')
+# print("inverse using GJ : ",ID)
 print('************')
 print("inverse using numpy : ",np.linalg.inv(np.array(old_a)))
 
