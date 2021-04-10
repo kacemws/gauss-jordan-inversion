@@ -40,13 +40,14 @@ for i in range(0, len(A)) :
         if A[i][j] != 0 :
             r = i
             s = j
-            A,I = iteration_GJ_UP(A,ID, r, s)
+            A,ID= iteration_GJ_UP(A, ID, r, s)
             break
 
 
-print(A)
-print(ID)
+print("matrice : ",A)
 print('************')
-print(np.linalg.inv(np.array(old_a)))
+print("inverse using GJ : ",ID)
+print('************')
+print("inverse using numpy : ",np.linalg.inv(np.array(old_a)))
 
 
