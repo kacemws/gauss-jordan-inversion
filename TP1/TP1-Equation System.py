@@ -4,8 +4,8 @@ import copy
 
 
 
-old_coefs = [[1,2],[3,1]]
-old_results = [1,2]
+old_coefs = [[2,1,4],[3,2,1],[1,3,3]]
+old_results = [16,10,16]
 
 coefs = copy.deepcopy(old_coefs)
 results = copy.deepcopy(old_results)
