@@ -1,4 +1,3 @@
-import numpy as np
 import copy
 
 
@@ -22,29 +21,21 @@ def iteration_GJ (A, r, s):
                 A[i][j] = A[i][j] - Ais * A[r][j]
     return A
 
-def iteration_GJ_solutions (A,Res, r, s): 
-    pivot = A[r][s]
-    Res[r] = Res[r] / pivot
-    for j in range(0,len(A[0])) : 
-        A[r][j] = A[r][j] / pivot
-    for i in range(0, len(A)) : 
-        if i != r : 
-            Ais = A[i][s]
-            Res[i] = Res[i] - Ais * Res[r]
-            for j in range(0,len(A[0])) : 
-                A[i][j] = A[i][j] - Ais * A[r][j]
-    return A,Res
+for i in range(0,len(results)) :
+    coefs[i].append(results[i])
 
 for i in range(0, len(coefs)) : 
     for j in range(0,len(coefs[0])) : 
-        if coefs[i][j] != 0 :
-            r = i
-            s = j
-            coefs, results = iteration_GJ_solutions(coefs,results, r, s)
-            break
+        r = i
+        s = i
+        coefs = iteration_GJ(coefs, r, s)
+
+solutions = []
+for i in range(0, len(coefs)) : 
+    solutions.append(coefs[i][-1])
 
 
-print(coefs)
+print(solutions)
 print(results)
 print('************')
 
