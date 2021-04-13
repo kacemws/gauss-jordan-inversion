@@ -109,7 +109,7 @@ if __name__ == "__main__":
         for j in range(0,len(ID[i])) : 
             A[i].append(ID[i][j])
    # add slack variables by hand   
-    for i in range(0, len(b)+1) :
+    for i in range(0, len(b)) :
         c.append(0)
 
     t, s, v = simplex(c, A, b)
