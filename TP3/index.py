@@ -84,11 +84,11 @@ class node :
         if self.z >= inferior_borne : 
             update_borne(self.z, self.decision_vars)
             
-            self.separate()
-            if self.left is not None : 
-                self.left.execute()
-            if self.right is not None : 
-                self.right.execute()
+        self.separate()
+        if self.left is not None : 
+            self.left.execute()
+        if self.right is not None : 
+            self.right.execute()
         
     def __repr__(self):
         left_part = ""
@@ -150,32 +150,23 @@ def main():
     typing = True
 
     while typing : 
-        # size = input("\nSaisir le nombre d'objets : ") 
+        size = input("\nSaisir le nombre d'objets : ") 
         try : 
-            # size = int(size)
-            # for i in range(size) : 
-            #     weight = int(input(f"\nSaisir le poids de l'objet {i+1} : ")) 
+            size = int(size)
+            for i in range(size) : 
+                weight = int(input(f"\nSaisir le poids de l'objet {i+1} : ")) 
 
-            #     utility = int(input(f"\nSaisir l'utilité de l'objet {i+1} : ")) 
+                utility = int(input(f"\nSaisir l'utilité de l'objet {i+1} : ")) 
 
-            #     backpack_objects.append(backpack_object(weight,utility))
+                backpack_objects.append(backpack_object(weight,utility))
             
-            # print(backpack_objects)
+            print(backpack_objects)
 
 
 
-            # max_weight = int(input("\nSaisir le poids maximale : "))
+            max_weight = int(input("\nSaisir le poids maximale : "))
 
 
-            backpack_objects = [
-                backpack_object(6,12),
-                backpack_object(3,8),
-                backpack_object(9,20),
-                backpack_object(5,9),
-                backpack_object(3,6),
-                backpack_object(7,16),
-            ]
-            max_weight = 17
 
             sorting(backpack_objects)
             decision_vars,z = initial_solution(backpack_objects)
