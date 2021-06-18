@@ -105,7 +105,7 @@ class node :
 def sorting (backpack_objects) : 
     backpack_objects.sort(key=lambda x:(x.utility/x.weight), reverse=True)
 
-### 2
+### 2 
 def initial_solution(backback_objects) : 
     decision_vars = []
     left_weight = max_weight
@@ -120,7 +120,11 @@ def initial_solution(backback_objects) :
             decision_vars.append(left_weight / object.weight)
             z+= object.utility * (left_weight / object.weight)
             left_weight = 0
+        # fi blasst mandir append 0, rani ndir append te3 dek float, kima 1/2 f cahier te3ek
     return decision_vars, z
+
+
+
 
 def update_borne(z, vars) : 
     global inferior_borne
@@ -131,7 +135,6 @@ def update_borne(z, vars) :
     decision_vars = vars
 
 def filter_fixed(value):
-    
     return value == 1
 
 
@@ -151,30 +154,44 @@ def main():
     typing = True
 
     while typing : 
-        size = input("\nSaisir le nombre d'objets : ") 
+        # size = input("\nSaisir le nombre d'objets : ") 
         try : 
-            size = int(size)
-            for i in range(size) : 
-                weight = int(input(f"\nSaisir le poids de l'objet {i+1} : ")) 
+            # size = int(size)
+            # for i in range(size) : 
+            #     weight = int(input(f"\nSaisir le poids de l'objet {i+1} : ")) 
 
-                utility = int(input(f"\nSaisir l'utilité de l'objet {i+1} : ")) 
+            #     utility = int(input(f"\nSaisir l'utilité de l'objet {i+1} : ")) 
 
-                backpack_objects.append(backpack_object(weight,utility))
+            #     backpack_objects.append(backpack_object(weight,utility))
             
-            print(backpack_objects)
+            # print(backpack_objects)
 
 
 
-            max_weight = int(input("\nSaisir le poids maximale : "))
+            # max_weight = int(input("\nSaisir le poids maximale : "))
+
+
+
+            backpack_objects = [
+                backpack_object(3,15),
+                backpack_object(4,18),
+                backpack_object(1,3),
+                backpack_object(3,7),
+                backpack_object(1,2),
+                backpack_object(1,1),
+            ]
+            max_weight = 5
 
 
 
             sorting(backpack_objects)
             decision_vars,z = initial_solution(backpack_objects)
 
+            print(decision_vars,z)
+
             update_borne(z,decision_vars)
 
-            root_node = node([])
+            root_node = node([None,None,None,None,None,None])
 
             ### 5
             root_node.execute()
@@ -182,8 +199,8 @@ def main():
             print('\nthe solution for P is : ', inferior_borne)
             print("\nwith the decisions vars as : ", decision_vars)
 
-            # print(root_node)
-            print2D(root_node)
+            # # print(root_node)
+            # print2D(root_node)
             typing =False
         except : 
             print("\nVeuillez saisir un nombre entier\n")
