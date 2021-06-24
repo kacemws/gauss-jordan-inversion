@@ -65,7 +65,7 @@ def main () :
 
         if question == 1 : 
             print("\n")
-            print(throw_dice())
+            print("On a obtenu : ",throw_dice())
         elif question == 2 : 
             try :
                 times = int(input('\nCombien de fois voulez-vous lancer le dé ? '))
@@ -78,14 +78,17 @@ def main () :
             print("\nnombre de fois où on obtient le nombre 6 : ",count_six(throws))
         
         elif question == 3 : 
+            print('\nles résultats obtenu : ')
             random_exp()
         else : 
             try :
-                times = int(input('\nCombien de fois voulez-vous lancer la pièce ? '))
+                times = int(input('\nCombien de fois voulez-vous lancer la pièce ?\n'))
             except : 
                 times = 1
 
             throws = throw_coin_times(times)
+
+            print('\nles résultats obtenu : ')
             print(throws)
 
             print("\nnombre de fois où on obtient face (pile -> 1, face ->0) : ",count_heads(throws))
@@ -93,8 +96,6 @@ def main () :
         print('\nRéesayer ? [O/N]')
         x = input()
         running = x in ['o','O']
-
-
 
 
 main()
